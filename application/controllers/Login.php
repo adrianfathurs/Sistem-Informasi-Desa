@@ -12,14 +12,20 @@ class Login extends CI_Controller {
         $this->load->view('Login/login.php');
     }
 
+    // fungsi untuk cek login
     function auth(){
+        // mengekstrak hasil inputan dari form login
         $input = $this->input->post(NULL,TRUE);
         extract($input);        
+
+        // mengirim data inputan ke model 'Mperangkat_Desa' dengan bentuk array
         $akun = array(
             'Id_PD' => $id,
             'password' => $pass
         );
         $cek_akun = $this->MPerangkat_Desa->cek_login($akun);
+
+        // apabaila data akun ditemukan maka $cek_akun akan bernilai true
         if ($cek_akun){
             // Data Session
             $data_session = array (
@@ -35,10 +41,13 @@ class Login extends CI_Controller {
         }
     }
 
+    // fungsi logout
     function LogOut(){
         $data_session = array (
             'Id_PD','Nama','is_login'
         );  
+        
+        // menghancurkan isi dari session login
         $this->session->unset_userdata($data_session);
         redirect('Login');
     }
