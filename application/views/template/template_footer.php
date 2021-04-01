@@ -9,7 +9,6 @@
 			  crossorigin="anonymous"></script>
     <!-- Data Table -->
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
     
     <?php 
     if(isset($js)){

@@ -62,21 +62,27 @@
             <div class="row mt-2">
               <table id="table_id" class="table-responsive">
                 <thead>
-                    <tr>
-                          <th>Column 1</th>
-                          <th>Column 2</th>
-                          <th>Column 2</th>
+                    <tr class="text-center">
+                          <th>No</th>
+                          <th>Id Dokumen</th>
+                          <th>Nama Dokumen</th>
+                          <th>File</th>
+                          <th>Nama Perangkat Desa</th>
+                          <th>Actions</th>
                     </tr>
                   </thead>
-                <?php for($i=0;$i<4;$i++):?>
+                <?php $i=1; foreach ($dataDokumen as $item): ?>
                   <tbody>
-                      <tr>
-                          <td>Row 1 Data 1</td>
-                          <td>Row 1 Data 2</td>
-                          <td>Row 1 Data 2</td>
+                      <tr class="text-center">
+                          <td><?php echo $i++?></td>
+                          <td><?php echo $item["Id_Dok"]?></td>
+                          <td><?php echo $item["Nama_Dokumen"]?></td>
+                          <td><a target="_blank" href="<?php echo base_url("Dokumen/download/").$item["File_Name"]?>"><?php echo $item["File_Name"]?></a></td>
+                          <td><?php echo $item["fk_PD"]?></td>    
+                          <td><a><button >Edit</button></a></td>    
                       </tr>
                   </tbody>
-                  <?php endfor;?>
+                  <?php endforeach;?>
               </table>
             </div>
         </div>

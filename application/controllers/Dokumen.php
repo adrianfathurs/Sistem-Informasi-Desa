@@ -2,9 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Dokumen extends CI_Controller {
-   public function __construct(){
-        parent :: __construct();
-        $this->load->model("MDokumen");
+  public function __construct(){
+    parent :: __construct();
+    $this->load->model("MDokumen");
+    $this->load->helper('download');
         
     }
 	public function index()
@@ -14,16 +15,19 @@ class Dokumen extends CI_Controller {
     $data['content']="dokumen/dokumen.php";
     $data['js']="dokumen/dokumen_js.php";
     $data['footer']="template/template_footer.php";
-    $this->load->view('template/vtemplate',$data);
+    $data['dataDokumen']=$this->MDokumen->getAll();
+    
+    $this->load->view('template/vtemplate',$data); 
 	}
 
   public function deletedFile($query){
     delete_files('./upload/dokumen/'.$query->File_Name);
   }
-  public function upload() 
-    {
+
+  public function upload() {
         $config['allowed_types']='pdf|jpg';
         $config['upload_path']='./upload/dokumen/';
+        
         $this->load->library('upload',$config);
 
         if($this->upload->do_upload('image')){
@@ -50,6 +54,12 @@ class Dokumen extends CI_Controller {
         else{
           print_r($this->upload->display_errors());
         }
+    }
+
+    public function download($fileName){
+      var_dump($fileName);
+        $file='upload/dokumen/'.$fileName;
+        force_download($file,NULL);
     }
 
 }
