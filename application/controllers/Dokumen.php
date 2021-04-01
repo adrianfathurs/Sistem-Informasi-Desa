@@ -25,8 +25,9 @@ class Dokumen extends CI_Controller {
   }
 
   public function upload() {
-        $config['allowed_types']='pdf|jpg';
+        $config['allowed_types']='pdf|docx|doc';
         $config['upload_path']='./upload/dokumen/';
+        $config['max_size']=0;
         
         $this->load->library('upload',$config);
 
@@ -58,7 +59,7 @@ class Dokumen extends CI_Controller {
 
     public function download($fileName){
       var_dump($fileName);
-        $file='upload/dokumen/'.$fileName;
+        $file='./upload/dokumen/'.$fileName;
         force_download($file,NULL);
     }
 
