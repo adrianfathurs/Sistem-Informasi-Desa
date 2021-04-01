@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2021 at 11:35 AM
+-- Generation Time: Apr 01, 2021 at 03:46 PM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -31,8 +31,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `dokumen` (
   `Id_Dok` int(5) NOT NULL,
   `Nama_Dokumen` varchar(30) NOT NULL,
+  `File_Name` varchar(256) NOT NULL,
   `fk_PD` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `dokumen`
+--
+
+INSERT INTO `dokumen` (`Id_Dok`, `Nama_Dokumen`, `File_Name`, `fk_PD`) VALUES
+(12, 'uyuude', 'Invoice-546523.pdf', 1),
+(14, 'uyuude', 'Vania1.jpg', 1);
 
 -- --------------------------------------------------------
 
