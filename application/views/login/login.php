@@ -7,23 +7,23 @@
 </head>
 <body>
 <center>
-    <h2> SISTEM INFORMASI PENGELOLAAN <BR></BR> KEUANGAN PEMBANGUNAN DESA</h2></center>
-    <HR></HR>
-    <div class="container" 
-        style="margin: 150px auto;
-        width: 200px;
-        padding: 10px;
-        ">
-        <form method="post" action="Login/auth">
-            <label > ID </label><br><br>
+<div class="wrap">
+    <div class="card " style="width: 60rem; ">
+    <div class="card-body">
+      <h4 class="card-title" style="text-align:center"><b>Sistem Informasi Pengelolaan Keuangan Pembangunan <br> Desa Kedung Pomahan Wetan</b></h4>
+      <hr>
+    
+        <form method="post" action="<?php echo site_url('Login/auth')?>">
+            <label style="padding-right: 170px"> ID </label><br><br>
             <input type="text" name="id" placeholder="Masukan ID Anda" ><br><br>
-            <label > Passord </label><br><br>
+            <label style="padding-right: 120px"> Password </label><br><br>
             <input type="password" name="pass" placeholder="Masukan Password"><br><br>
-            <div><center>
-            <input type="submit" name="Login" value="Login"></center>
+            <div>
+            <input type="submit" name="Login" value="Login">
             </div>
         </form>
+    
     </div>
-
-</body>
-</html>
+    </div>
+    </div>
+    </center>

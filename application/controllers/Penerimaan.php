@@ -13,7 +13,7 @@ class Penerimaan extends CI_Controller {
     $data['Nama'] = $this->session->userdata('Nama'); 
 	$data['is_login'] = $this->session->userdata('is_login'); 
     $data['header']="template/template_header.php";
-	$data['css']="dashboard/dashboard_css";
+	$data['css']="penerimaan/penerimaan_css";
 	$data['content']="penerimaan/penerimaan";	
 	$data['footer']="template/template_footer.php";	
     $this->load->view('template/vtemplate',$data);   
