@@ -13,7 +13,7 @@
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Log Out</a></li>
+              <li><a class="dropdown-item" href="<?php echo site_url('Login/LogOut')?>">Log Out</a></li>
             </ul>
           </div>
         </div>
@@ -31,31 +31,31 @@
             <input type="text">
         </p>
         <p>
-            <label for="">Tanggal Penerimaan</label>
-            <input type="text">
+            <label for="">ID Parameter</label>
+            <select></select>
         </p>
         <p>
-            <label for="">Nominal</label>
-            <input type="text">
+            <label for="">Tanggal Penerimaan</label>
+            <input type="date">
         </p>
         <p>           
             <input type="text">
         </p>
         <p>
-        <label for="">ID Parameter</label>
+        <label for="">Nominal</label>
             <input type="text">
         </p>
         </div>
         <center>
         <div class="tombol">
             <p>
-                <button>Send</button>
+                <button>Kembali</button>
             </p>
             <p>
-                <button>Send</button>
+                <button>Simpan</button>
             </p>
             <p>
-                <button>Send</button>
+                <button>Hapus</button>
             </p>
         </div></center>
         </form>
@@ -74,25 +74,27 @@
                 <thead>
                     <tr class="text-center">
                           <th>No</th>
-                          <th>Id Dokumen</th>
-                          <th>Nama Dokumen</th>
-                          <th>File</th>
-                          <th>Nama Perangkat Desa</th>
-                          <th>Actions</th>
+                          <th>Id Penerimaan</th>
+                          <th>Tanggal Penerimaan</th>
+                          <th>Nominal</th>
+                          <th>Id Parameter</th>
+                          <th>Parameter</th>
+                          <th></th>
                     </tr>
                   </thead>
-                <!-- <?php $i=1; foreach ($dataDokumen as $item): ?>
+                <?php $i=1; foreach ($dataPenerimaan as $item): ?>
                   <tbody>
                       <tr class="text-center">
                           <td><?php echo $i++?></td>
-                          <td><?php echo $item["Id_Dok"]?></td>
-                          <td><?php echo $item["Nama_Dokumen"]?></td>
-                          <td><a target="_blank" href="<?php echo base_url("Dokumen/download/").$item["File_Name"]?>"><?php echo $item["File_Name"]?></a></td>
+                          <td><?php echo $item["Id_Penerimaan"]?></td>
+                          <td><?php echo $item["Tanggal_Penerimaan"]?></td>
+                          <td><?php echo $item["Nominal"]?></td>
+                          <td><?php echo $item["fk_Parameter"]?></td>   
                           <td><?php echo $item["fk_PD"]?></td>    
-                          <td><a><button >Edit</button></a></td>    
+                          <td><a>Edit</a></td>    
                       </tr>
                   </tbody>
-                  <?php endforeach;?> -->
+                  <?php endforeach;?>
               </table>
             </div>
         </div>

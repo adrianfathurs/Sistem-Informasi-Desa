@@ -8,14 +8,15 @@
     padding-right: 50px;
   }
   input,
-  textarea,
+  textarea,select,
   button {      
     width: 60%;
     border: 1px solid #000;
   }
   
-  input {
+  input,select {
     float: right;
+    padding-right: 200px;
   }
 
   .form {
@@ -36,7 +37,7 @@
   }
   
   button,
-  input,
+  input,select,
   textarea {
     padding: 0.5em;
   }

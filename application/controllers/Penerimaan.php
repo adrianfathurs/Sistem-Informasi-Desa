@@ -14,8 +14,10 @@ class Penerimaan extends CI_Controller {
 	$data['is_login'] = $this->session->userdata('is_login'); 
     $data['header']="template/template_header.php";
 	$data['css']="penerimaan/penerimaan_css";
+    $data['js']="penerimaan/penerimaan_js";
 	$data['content']="penerimaan/penerimaan";	
 	$data['footer']="template/template_footer.php";	
+    $data['dataPenerimaan'] = $this->MPenerimaan->getAll();
     $this->load->view('template/vtemplate',$data);   
     }
 }
