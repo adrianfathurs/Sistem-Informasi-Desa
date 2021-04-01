@@ -3,7 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MDokumen extends CI_Model {
 
-	public function save($id,$input){
+	public function getAll(){
+    $query = $this->db->get('dokumen')->result_array();
+    return $query;
+  }
+  public function save($id,$input){
     $this->db->where('Id_Dok', $id);
     $query=$this->db->from('dokumen');
     $data = $query->get()->row();
