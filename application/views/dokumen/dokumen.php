@@ -35,8 +35,9 @@
               <div class="mb-2">
               <label for="fileDokumen" class="form-label">Browse </label>
               <input class="form-control"  type="file" id="image" name="image" >
+              </div>
             <center>
-            <div class="container mb-3">
+            <div class="container mb-2">
               <div class="row mx-auto">
                 <div class="col-4">
                 <button type="submit" class="btn btn-secondary">Kembali</button>
@@ -79,7 +80,7 @@
                           <td><?php echo $item["Nama_Dokumen"]?></td>
                           <td><a target="_blank" href="<?php echo base_url("Dokumen/download/").$item["File_Name"]?>"><?php echo $item["File_Name"]?></a></td>
                           <td><?php echo $item["fk_PD"]?></td>    
-                          <td><a><button >Edit</button></a></td>    
+                          <td><button id="btnEdit" data-id="<?php echo $item["Id_Dok"] ?>" data-nama="<?php echo $item["Nama_Dokumen"] ?>" data-file="<?php echo $item["File_Name"] ?>"  >Edit</button></td>    
                       </tr>
                   </tbody>
                   <?php endforeach;?>
