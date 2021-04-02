@@ -53,7 +53,7 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <p class="card-text">PENERIMAAN BLOK</p>
               <a href="<?php echo site_url('Penerimaan')?>" class="btn btn-primary">PENERIMAAN</a>
             </div>
           </div>
@@ -62,8 +62,8 @@
          <div class="card">
             <div class="card-body">
               <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <p class="card-text">PENGELUARAN BLOK</p>
+              <a href="<?php echo site_url('pengeluaran')?>" class="btn btn-primary">PENGELUARAN</a>
             </div>
           </div>
         </div>
