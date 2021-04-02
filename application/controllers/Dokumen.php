@@ -7,6 +7,7 @@ class Dokumen extends CI_Controller {
     parent :: __construct();
     $this->load->model("MDokumen");
     $this->load->helper('download');
+    $this->load->helper('file');
         
     }
   /* function index merupakan fungsi default yang dijalankan disaat Class Dokumen Dijalankan */
@@ -33,7 +34,9 @@ class Dokumen extends CI_Controller {
   */
   public function deletedFile($query){
     var_dump($query);
-    delete_files('./upload/dokumen/'.$query->File_Name); 
+    var_dump(delete_files('./upload/dokumen/'.$query->File_Name)); 
+    unlink("./upload/dokumen/" .$query->File_Name);
+    var_dump('./upload/dokumen/'.$query->File_Name);
   }
   /* 
     function upload merupakan fungsi yang digunakan untuk mengupload file yang telah diinputkan oleh user
@@ -77,7 +80,7 @@ class Dokumen extends CI_Controller {
   */
   public function deleteData($id_Dok){
       $response=$this->MDokumen->selectedById($id_Dok);
-      $hasil1=$this->deletedFile($response);
+      $this->deletedFile($response);
       $hasil2=$this->MDokumen->deletedData($id_Dok);
       redirect("Dokumen");
   }
