@@ -21,46 +21,43 @@
         <h4 class="text-center"><b>Penerimaan</b></h4>      
       <div class="row">
       <div class="contain">
-
-    <div class="wrapper"> 
-    <div>        
-        <form action="">
-        <div class="form">
-        <p>
-            <label for="">ID Penerimaan</label>
-            <input type="text">
-        </p>
-        <p>
-            <label for="">ID Parameter</label>
-            <select></select>
-        </p>
-        <p>
-            <label for="">Tanggal Penerimaan</label>
-            <input type="date">
-        </p>
-        <p>           
-            <input type="text">
-        </p>
-        <p>
-        <label for="">Nominal</label>
-            <input type="text">
-        </p>
+        <div class="wrapper">         
+            <form action="">
+            <div class="form">
+            <p>
+                <label for="">ID Penerimaan</label>
+                <input type="text">
+            </p>
+            <p>
+                <label for="">ID Parameter</label>
+                <input list="id_parameter" type="text" name="id_parameter" id="id_parameter" placeholder="select">
+            </p>
+            <p>
+                <label for="">Tanggal Penerimaan</label>
+                <input type="date">
+            </p>
+            <p>           
+                <input type="text">
+            </p>
+            <p>
+            <label for="">Nominal</label>
+                <input type="text">
+            </p>
+            </div>
+            <center>
+            <div class="tombol">
+                <p>
+                    <button>Kembali</button>
+                </p>
+                <p>
+                    <button>Simpan</button>
+                </p>
+                <p>
+                    <button>Hapus</button>
+                </p>
+            </div></center>
+            </form>      
         </div>
-        <center>
-        <div class="tombol">
-            <p>
-                <button>Kembali</button>
-            </p>
-            <p>
-                <button>Simpan</button>
-            </p>
-            <p>
-                <button>Hapus</button>
-            </p>
-        </div></center>
-        </form>
-    </div>
-    </div>
     </div>
         </div>
         <hr>
@@ -100,9 +97,14 @@
         </div>
         </div>
       </div>
-     
     </div>
   </div>
-
 </div>
 
+<datalist id="id_parameter">
+      <?php 
+        foreach ($dataParameter as $parameter){
+          echo "<option> $parameter->Nama_Parameter</option>";
+        }
+      ?>
+</datalist>
