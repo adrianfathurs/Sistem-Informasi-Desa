@@ -25,7 +25,7 @@
         <div class="col-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title"><b>Dokumen</b></h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               <a href="<?php echo base_url("Dokumen")?>" class="btn btn-primary">Go somewhere</a>
             </div>
@@ -34,7 +34,7 @@
         <div class="col-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title"><b>Perangkat Desa</b></h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
@@ -43,7 +43,7 @@
         <div class="col-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title"><b>Parameter</b></h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
@@ -52,7 +52,7 @@
         <div class="col-4 mt-2">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title"><b>Penerimaan</b></h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               <a href="<?php echo site_url('Penerimaan')?>" class="btn btn-primary">PENERIMAAN</a>
             </div>
@@ -61,7 +61,7 @@
         <div class="col-4 mt-2">
          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title"><b>Pengeluaran</b></h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
@@ -70,7 +70,7 @@
         <div class="col-4 mt-2">
          <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
+                <h5 class="card-title"><b>Laporan</b></h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>

@@ -13,7 +13,7 @@
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Log Out</a></li>
+              <li><a class="dropdown-item" href="<?php echo site_url('Login/LogOut')?>">Log Out</a></li>
             </ul>
           </div>
         </div>
@@ -39,8 +39,8 @@
             <center>
             <div class="container mb-2">
               <div class="row mx-auto">
-                <div class="col-4">
-                <button type="" class="btn btn-secondary">Kembali</button>
+                <div class="col-4">  
+                <button class="btn btn-secondary"><a href="<?php echo site_url("Dashboard")?>" style="color:white;text-decoration:none;">Kembali</a></button>
                 </div>
                 <div class="col-4">
                 <button type="submit" name="submit" id="form-dokumen-save" class="btn btn-primary" value="upload">Simpan</button>
@@ -49,8 +49,8 @@
                 <button type="submit" name="submit" value="hapus" class="btn btn-danger">Hapus</button>
                 </div>
               </div>
+              </form>      
             </div>
-            </form>      
             </center>
           </div>
         </div>
@@ -61,7 +61,7 @@
         <div class="wrapping-content">
           <div class="container">
             <div class="row mt-2">
-              <table id="table_id" class="table-responsive">
+              <table id="table_id" class="display">
                 <thead>
                     <tr class="text-center">
                           <th>No</th>
