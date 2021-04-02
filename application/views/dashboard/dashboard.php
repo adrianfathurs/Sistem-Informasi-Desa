@@ -52,7 +52,7 @@
         <div class="col-4 mt-2">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title">PENERIMAAN </h5>
               <p class="card-text">PENERIMAAN BLOK</p>
               <a href="<?php echo site_url('Penerimaan')?>" class="btn btn-primary">PENERIMAAN</a>
             </div>
@@ -61,7 +61,7 @@
         <div class="col-4 mt-2">
          <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
+              <h5 class="card-title">PENGELUARAN</h5>
               <p class="card-text">PENGELUARAN BLOK</p>
               <a href="<?php echo site_url('pengeluaran')?>" class="btn btn-primary">PENGELUARAN</a>
             </div>
