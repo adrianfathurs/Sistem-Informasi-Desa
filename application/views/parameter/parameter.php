@@ -18,7 +18,7 @@
           </div>
         </div>
         <div style="clear:both"></div>
-        <h4 class="text-center"><b>Dokumen</b></h4>
+        <h4 class="text-center"><b>Parameter</b></h4>
       
       <div class="row">
         <div class="col">
