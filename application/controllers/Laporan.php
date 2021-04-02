@@ -21,15 +21,40 @@ class Laporan extends CI_Controller {
     $data['dataPenerimaan'] = $this->MPenerimaan->getTahun();
     $data['dataParameter'] = $this->MParameter->getAll();    
     $this->load->view('template/vtemplate',$data);       
-    // $t = substr($data['Tanggal_Penerimaan'],1,4);
+ 
     }
     
     function get_bulan(){
-        $data = $this->input->post('id',true);        
+        $data = $this->input->post('id',true);                
+        $bulan_berdasarkan_tahun = $this->MPenerimaan->getBulan($data);
+        foreach ($bulan_berdasarkan_tahun as $key => $val){
+            $bulan_berdasarkan_tahun[$key]->Tanggal_Penerimaan	= $this->convert_date($val->Tanggal_Penerimaan);        
+        };
+        // print_r($bulan_berdasarkan_tahun);die;
 
-        
-
-
-        echo json_encode($data);
+        echo json_encode($bulan_berdasarkan_tahun);
     }
+
+    private function convert_date($date) {
+		$split_date			= explode("-", $date);
+		$year				= $split_date[0];
+		$month				= (int) $split_date[1];
+		$day				= $split_date[2];
+
+		if		($month == 1)	{ $month = "Januari"; }
+		else if ($month == 2)	{ $month = "Februari"; }
+		else if ($month == 3)	{ $month = "Maret"; }
+		else if ($month == 4)	{ $month = "April"; }
+		else if ($month == 5)	{ $month = "Mei"; }
+		else if ($month == 6)	{ $month = "Juni"; }
+		else if ($month == 7)	{ $month = "Juli"; }
+		else if ($month == 8)	{ $month = "Agustus"; }
+		else if ($month == 9)	{ $month = "September"; }
+		else if ($month == 10)	{ $month = "Oktober"; }
+		else if ($month == 11)	{ $month = "November"; }
+		else if ($month == 12)	{ $month = "Desember"; }
+
+		$final_convert =  $month;
+		return $final_convert;
+	}
 }

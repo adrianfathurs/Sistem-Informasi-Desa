@@ -25,7 +25,7 @@
             <form id="form-dokumen" action="<?php echo base_url('')?>" method="POST" enctype="multipart/form-data">
             <div class="form">
             <p>
-                <label for="">ID Parameter</label>
+                <label for="">Bulan</label>
                 <select  name="bulan" id="bulan">
                 <option disabled selected> No selected</option>                  
                 </select>

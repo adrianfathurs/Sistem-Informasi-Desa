@@ -31,8 +31,16 @@ class MPenerimaan extends CI_Model {
       function getTahun(){
         $this->db->select('*');
         $this->db->from('Penerimaan');
-        $this->db->distinct('Tanggal_Penerimaan');
+        $this->db->group_by('year(Tanggal_Penerimaan)');
         $query = $this->db->get(); 
         return $query->result_array();
+      }
+
+      function getBulan($bulan){
+        $this->db->select('Tanggal_Penerimaan');
+        $this->db->from('Penerimaan');
+        $this->db->where('year(Tanggal_Penerimaan)',$bulan);
+        $query = $this->db->get();
+        return $query->result();
       }
 }

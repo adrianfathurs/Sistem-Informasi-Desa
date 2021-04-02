@@ -11,11 +11,11 @@
                     async : true,
                     dataType : 'json',
                     success: function(data){
-                        console.log(data);
+                        
                         var html = '';
                         var i;
                         for(i=0; i<data.length; i++){
-                            html += '<option value='+data[i]+'>'+data[i]+'</option>';
+                            html += '<option value='+data[i]['Tanggal_Penerimaan']+'>'+data[i]['Tanggal_Penerimaan']+'</option>';
                         }
                         $('#bulan').html(html);
  
