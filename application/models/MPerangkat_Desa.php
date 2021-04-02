@@ -8,7 +8,7 @@ class MPerangkat_Desa extends CI_Model {
         $this->db->from('Perangkat_Desa');
         $this->db->where($akun);    
 
-        return  $this->db->get()->result();
+        return  $this->db->get()->row();
     }
 	
 }

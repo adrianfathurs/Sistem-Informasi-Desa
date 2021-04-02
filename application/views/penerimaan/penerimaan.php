@@ -22,26 +22,31 @@
       <div class="row">
       <div class="contain">
         <div class="wrapper">         
-            <form action="">
+            <form id="form-dokumen" action="<?php echo base_url('Penerimaan/form')?>" method="POST" enctype="multipart/form-data">
             <div class="form">
             <p>
                 <label for="">ID Penerimaan</label>
-                <input type="text">
+                <input type="text" name="id_penerimaan">
             </p>
             <p>
                 <label for="">ID Parameter</label>
-                <input list="id_parameter" type="text" name="id_parameter" id="id_parameter" placeholder="select">
+                <select id="select_parameter" name="id_parameter" onChange="Change()">
+                <option disabled selected> Select ID Parameter</option>
+                  <?php foreach ($dataParameter as $parameter): ?>
+                    <option value="<?php echo $parameter['Nama_Parameter']?>"> <?php echo $parameter['Id_Paramater'] ?> </option>
+                  <?php endforeach;?>
+                </select>
             </p>
             <p>
                 <label for="">Tanggal Penerimaan</label>
-                <input type="date">
+                <input type="date" name="tanggal_penerimaan">
             </p>
             <p>           
-                <input type="text">
+                <input type="text" id="nama_parameter" name="nama_parameter" readonly>
             </p>
             <p>
             <label for="">Nominal</label>
-                <input type="text">
+                <input type="text" name="nominal">
             </p>
             </div>
             <center>
@@ -50,10 +55,10 @@
                     <button>Kembali</button>
                 </p>
                 <p>
-                    <button>Simpan</button>
+                    <button type="submit" name="submit" value="Simpan">Simpan</button>
                 </p>
                 <p>
-                    <button>Hapus</button>
+                    <button type="submit" name="submit" value="Hapus">Hapus</button>
                 </p>
             </div></center>
             </form>      
@@ -88,7 +93,7 @@
                           <td><?php echo $item["Nominal"]?></td>
                           <td><?php echo $item["fk_Parameter"]?></td>   
                           <td><?php echo $item["fk_PD"]?></td>    
-                          <td><a>Edit</a></td>    
+                          <td><button style="width:100%">edit</button></td>    
                       </tr>
                   </tbody>
                   <?php endforeach;?>
@@ -101,10 +106,3 @@
   </div>
 </div>
 
-<datalist id="id_parameter">
-      <?php 
-        foreach ($dataParameter as $parameter){
-          echo "<option> $parameter->Nama_Parameter</option>";
-        }
-      ?>
-</datalist>

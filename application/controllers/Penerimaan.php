@@ -19,7 +19,29 @@ class Penerimaan extends CI_Controller {
 	$data['content']="penerimaan/penerimaan";	
 	$data['footer']="template/template_footer.php";	
     $data['dataPenerimaan'] = $this->MPenerimaan->getAll();
-    $data['dataParameter'] = $this->MParameter->getAll();
+    $data['dataParameter'] = $this->MParameter->getAll();    
     $this->load->view('template/vtemplate',$data);   
+    }
+
+    function form(){      
+        $input = $this->input->post(NULL,TRUE);
+        extract($input);   
+
+        if($this->input->post("submit")=="Simpan"){            
+            $data_penerimaan = [
+                'Id_Penerimaan ' => $id_penerimaan,
+                'Tanggal_Penerimaan' => $tanggal_penerimaan,
+                'Nominal' => $nominal,
+                'fk_Parameter' => $this->MParameter->getIdParameter($id_parameter),
+                'fk_PD' => $this->session->userdata('Id_PD')
+            ];
+            $this->MPenerimaan->Simpan_Penerimaan($data_penerimaan,$id_penerimaan);
+            redirect('Penerimaan');
+        }else if($this->input->post("submit")=="Hapus") {
+        //   $id_Dok=$this->input->post("id_dokumen");        
+        //   $this->Hapus_Penerimaan($id_Dok);
+        echo "hapus";
+        }
+        echo "gagal";
     }
 }

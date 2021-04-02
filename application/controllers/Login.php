@@ -35,9 +35,9 @@ class Login extends CI_Controller {
             // Data Session
             $data_session = array (
                 'Id_PD'     => $cek_akun->Id_PD,
-                'Nama' 	    => $user->Nama,                        
+                'Nama' 	    => $cek_akun->Nama,                        
                 'is_login' 	=> true
-            );       
+            );                   
             // Set Session degan data diatas  
             $this->session->set_userdata($data_session);
             redirect('Dashboard');
