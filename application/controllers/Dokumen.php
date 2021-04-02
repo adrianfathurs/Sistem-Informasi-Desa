@@ -12,15 +12,22 @@ class Dokumen extends CI_Controller {
   /* function index merupakan fungsi default yang dijalankan disaat Class Dokumen Dijalankan */
 	public function index()
 	{
-		$data['header']="template/template_header.php";
-    $data['css']="dokumen/dokumen_css";
-    $data['content']="dokumen/dokumen.php";
-    $data['js']="dokumen/dokumen_js.php";
-    $data['footer']="template/template_footer.php";
-    $data['dataDokumen']=$this->MDokumen->getAll();
-    
-    $this->load->view('template/vtemplate',$data); 
-	}
+    	// Data Session
+    $data['Id_PD'] = $this->session->userdata('Id_PD'); 
+    $data['Nama'] = $this->session->userdata('Nama'); 
+    $data['is_login'] = $this->session->userdata('is_login');
+    if($data['is_login']== TRUE){
+      $data['header']="template/template_header.php";
+      $data['css']="dokumen/dokumen_css";
+      $data['content']="dokumen/dokumen.php";
+      $data['js']="dokumen/dokumen_js.php";
+      $data['footer']="template/template_footer.php";
+      $data['dataDokumen']=$this->MDokumen->getAll();
+      $this->load->view('template/vtemplate',$data); 
+      } else {
+			redirect('Login');
+		}
+  }
   /* function deletedFile merupakan fungsi yang digunakan untuk menghapus file lokal yang telah diupload 
     letak file yang dihapus ada dipath yang tertera didalam fungsi
   */
@@ -47,7 +54,7 @@ class Dokumen extends CI_Controller {
             'Id_Dok'=>$this->input->post("id_dokumen"),
             'Nama_Dokumen'=>$this->input->post("nama_dokumen"),
             'File_Name'=>$this->upload->data('file_name'),
-            'fk_PD'=>1,
+            'fk_PD'=>$this->session->userdata('Id_PD'),
           ];
           /* 
             mengarahkan kemodel MDokumen dan diarahkan ke fungsi save
