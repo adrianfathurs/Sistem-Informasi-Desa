@@ -15,5 +15,9 @@ $(document).ready( function () {
     $("#id_dokumen").val(id);
     $("#id_dokumen").attr("readonly",true);
     $("#id_dokumen").attr("value",id);
+    $("#nama_dokumen").val(namaDokumen);
+    $("#nama_dokumen").attr("value",namaDokumen);
+    $('input[type="file"]').text(fileName);
 });
+
 </script>

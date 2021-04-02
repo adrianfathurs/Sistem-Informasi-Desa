@@ -23,7 +23,7 @@
       <div class="row">
         <div class="col">
           <div class="wrapping-content">
-            <form id="form-dokumen" action="<?php echo base_url('Dokumen/upload')?>" method="POST" enctype="multipart/form-data">
+            <form id="form-dokumen" action="<?php echo base_url('Dokumen/formDokumen')?>" method="POST" enctype="multipart/form-data">
               <div class="mb-2">
                 <label for="id_dokumen" class="form-label">ID Dokumen</label>
                 <input type="number" class="form-control" id="id_dokumen" name="id_dokumen" >
@@ -40,13 +40,13 @@
             <div class="container mb-2">
               <div class="row mx-auto">
                 <div class="col-4">
-                <button type="submit" class="btn btn-secondary">Kembali</button>
+                <button type="" class="btn btn-secondary">Kembali</button>
                 </div>
                 <div class="col-4">
-                <button type="submit" id="form-dokumen-save" class="btn btn-primary" value="Upload">Simpan</button>
+                <button type="submit" name="submit" id="form-dokumen-save" class="btn btn-primary" value="upload">Simpan</button>
                 </div>
                 <div class="col-4">
-                <button type="submit" class="btn btn-danger">Hapus</button>
+                <button type="submit" name="submit" value="hapus" class="btn btn-danger">Hapus</button>
                 </div>
               </div>
             </div>
