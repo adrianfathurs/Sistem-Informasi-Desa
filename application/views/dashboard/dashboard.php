@@ -72,7 +72,7 @@
               <div class="card-body">
                 <h5 class="card-title"><b>Laporan</b></h5>
                 <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="<?php echo site_url('laporan')?>" class="btn btn-primary">Go somewhere</a>
               </div>
             </div>
           </div>
