@@ -93,12 +93,12 @@
                           <td><?php echo $item["Nominal"]?></td>
                           <td><?php echo $item["fk_Parameter"]?></td>   
                           <td><?php echo $item["Nama_Parameter"]?></td>    
-                          <td><button style="width:100%"
+                          <td><button style="width:100%" id="btnEdit"
                                       data-id="<?php echo $item["Id_Penerimaan"] ?>"
-                                      data-id="<?php echo $item["Tanggal_Penerimaan"] ?>"
-                                      data-id="<?php echo $item["Nominal"] ?>"
-                                      data-id="<?php echo $item["fk_Parameter"] ?>"
-                                      data-id="<?php echo $item["Nama_Parameter"] ?>"
+                                      data-tanggal="<?php echo $item["Tanggal_Penerimaan"] ?>"
+                                      data-nominal="<?php echo $item["Nominal"] ?>"
+                                      data-id_parameter="<?php echo $item["fk_Parameter"] ?>"
+                                      data-nama_parameter="<?php echo $item["Nama_Parameter"] ?>"
                                       >edit</button></td>    
                       </tr>
                   </tbody>

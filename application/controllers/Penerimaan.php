@@ -26,22 +26,23 @@ class Penerimaan extends CI_Controller {
     function form(){      
         $input = $this->input->post(NULL,TRUE);
         extract($input);   
-
+        // print_r($input);die;
         if($this->input->post("submit")=="Simpan"){            
             $data_penerimaan = [
                 'Id_Penerimaan ' => $id_penerimaan,
                 'Tanggal_Penerimaan' => $tanggal_penerimaan,
                 'Nominal' => $nominal,
-                'fk_Parameter' => $this->MParameter->getIdParameter($id_parameter),
+                'fk_Parameter' => $this->MParameter->getIdParameter($nama_parameter),
                 'fk_PD' => $this->session->userdata('Id_PD')
             ];
+            // print_r($data_penerimaan);die;
             $this->MPenerimaan->Simpan_Penerimaan($data_penerimaan,$id_penerimaan);
             redirect('Penerimaan');
         }else if($this->input->post("submit")=="Hapus") {
-        //   $id_Dok=$this->input->post("id_dokumen");        
-        //   $this->Hapus_Penerimaan($id_Dok);
-        echo "hapus";
+            $this->MPenerimaan->hapus_penerimaan($id_penerimaan);
+            redirect('Penerimaan');
+        } else{
+            redirect('dashboard');
         }
-        echo "gagal";
     }
 }

@@ -13,15 +13,18 @@ function Change(){
   $(document).on("click",'#btnEdit',function(){
 
     var id=$(this).data('id');
-    var namaDokumen=$(this).data('nama');
-    var fileName=$(this).data('file');
-    console.log(id,namaDokumen,fileName);
-    $("#id_dokumen").val(id);
-    $("#id_dokumen").attr("readonly",true);
-    $("#id_dokumen").attr("value",id);
-    $("#nama_dokumen").val(namaDokumen);
-    $("#nama_dokumen").attr("value",namaDokumen);
-    $('input[type="file"]').text(fileName);
+    var tanggal=$(this).data('tanggal');
+    var nominal=$(this).data('nominal');
+    var id_parameter=$(this).data('id_parameter');
+    var nama_parameter=$(this).data('nama_parameter');
+    console.log(id,tanggal,nominal,id_parameter,nama_parameter);
+    $("#id_penerimaan").val(id);
+    $("#id_penerimaan").attr("readonly",true);
+    $("#id_penerimaan").attr("value",id);
+    $("#select_parameter").val(id_parameter);
+    $("#tanggal_penerimaan").attr("value",tanggal);
+    $("#nama_parameter").val(nama_parameter);
+    $("#nominal").val(nominal);
 });
 
 </script>

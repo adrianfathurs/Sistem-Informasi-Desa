@@ -23,4 +23,8 @@ class MPenerimaan extends CI_Model {
           return true;
         }
       }
+
+      function hapus_penerimaan($id_penerimaan){
+        $this->db->delete('Penerimaan', array('Id_Penerimaan' => $id_penerimaan));
+      }
 }
