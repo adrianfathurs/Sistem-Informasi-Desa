@@ -18,11 +18,11 @@ function Change(){
     var id_parameter=$(this).data('id_parameter');
     var nama_parameter=$(this).data('nama_parameter');
     console.log(id,tanggal,nominal,id_parameter,nama_parameter);
-    $("#id_penerimaan").val(id);
-    $("#id_penerimaan").attr("readonly",true);
-    $("#id_penerimaan").attr("value",id);
+    $("#id_pengeluaran").val(id);
+    $("#id_pengeluaran").attr("readonly",true);
+    $("#id_pengeluaran").attr("value",id);
     $("#select_parameter").val(id_parameter);
-    $("#tanggal_penerimaan").attr("value",tanggal);
+    $("#tanggal_pengeluaran").attr("value",tanggal);
     $("#nama_parameter").val(nama_parameter);
     $("#nominal").val(nominal);
 });
