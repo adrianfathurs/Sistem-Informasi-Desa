@@ -4,7 +4,6 @@ $(document).ready( function () {
     $('#table_id').DataTable();
 } );
 </script>
-
 <script type="text/javascript">
   $(document).on("click",'#btnEdit',function(){
 
@@ -21,3 +20,4 @@ $(document).ready( function () {
 });
 
 </script>
+

@@ -23,18 +23,14 @@
       <div class="row">
         <div class="col">
           <div class="wrapping-content">
-            <form id="form-dokumen" action="<?php echo base_url('Dokumen/formDokumen')?>" method="POST" enctype="multipart/form-data">
+            <form id="form-parameter" action="<?php echo base_url('Parameter/formParameter')?>" method="POST" enctype="multipart/form-data">
               <div class="mb-2">
-                <label for="id_dokumen" class="form-label">ID Dokumen</label>
-                <input type="number" class="form-control" id="id_dokumen" name="id_dokumen" required >
+                <label for="id_parameter" class="form-label">ID Parameter</label>
+                <input type="number" class="form-control" id="id_parameter" name="id_parameter" required >
               </div>
               <div class="mb-2">
-                <label for="nama_dokumen" class="form-label" >Nama Dokumen</label>
-                <input type="text" class="form-control" id="nama_dokumen" name="nama_dokumen" required>
-              </div>
-              <div class="mb-2">
-              <label for="fileDokumen" class="form-label">Browse </label>
-              <input class="form-control"  type="file" id="image" name="image" required >
+                <label for="nama_parameter" class="form-label" >Nama Parameter</label>
+                <input type="text" class="form-control" id="nama_parameter" name="nama_parameter" required>
               </div>
             <center>
             <div class="container mb-2">
@@ -65,25 +61,22 @@
                 <thead>
                     <tr class="text-center">
                           <th>No</th>
-                          <th>Id Dokumen</th>
-                          <th>Nama Dokumen</th>
-                          <th>File</th>
-                          <th>Nama Perangkat Desa</th>
-                          <th>Actions</th>
+                          <th>Id Paramater</th>
+                          <th>Nama Parameter</th>
+                          <th>Action</th>
+                          
                     </tr>
                   </thead>
-                <?php $i=1; foreach ($dataDokumen as $item): ?>
+                <?php $i=1; foreach ($dataParameter as $item): ?>
                   <tbody>
                       <tr class="text-center">
                           <td><?php echo $i++?></td>
-                          <td><?php echo $item["Id_Dok"]?></td>
-                          <td><?php echo $item["Nama_Dokumen"]?></td>
-                          <td><a target="_blank" href="<?php echo base_url("Dokumen/download/").$item["File_Name"]?>"><?php echo $item["File_Name"]?></a></td>
-                          <td><?php echo $item["fk_PD"]?></td>    
-                          <td><button id="btnEdit" data-id="<?php echo $item["Id_Dok"] ?>" data-nama="<?php echo $item["Nama_Dokumen"] ?>" data-file="<?php echo $item["File_Name"] ?>"  >Edit</button></td>    
+                          <td><?php echo $item["Id_Parameter"]?></td>
+                          <td><?php echo $item["Nama_Parameter"]?></td>   
+                          <td><button class="btnEdits" data-id="<?php echo $item["Id_Parameter"] ?>" data-nama="<?php echo $item["Nama_Parameter"] ?>">Edit</button></td>    
                       </tr>
                   </tbody>
-                  <?php endforeach;?>
+                  <?php endforeach;?> 
               </table>
             </div>
         </div>
