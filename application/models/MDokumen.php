@@ -20,4 +20,15 @@ class MDokumen extends CI_Model {
       return false;
     }
   }
+  public function selectedById($id_Dok){
+    $this->db->where('Id_Dok',$id_Dok);
+    $query=$this->db->from('dokumen');
+    $data = $query->get()->row();
+    return $data;
+  }
+  public function deletedData($id_Dok){
+    $this->db->where('Id_Dok', $id_Dok);
+    $this->db->delete('dokumen');
+    return true;
+  }
 }
