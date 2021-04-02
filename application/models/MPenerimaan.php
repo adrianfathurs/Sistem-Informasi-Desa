@@ -27,4 +27,12 @@ class MPenerimaan extends CI_Model {
       function hapus_penerimaan($id_penerimaan){
         $this->db->delete('Penerimaan', array('Id_Penerimaan' => $id_penerimaan));
       }
+
+      function getTahun(){
+        $this->db->select('*');
+        $this->db->from('Penerimaan');
+        $this->db->distinct('Tanggal_Penerimaan');
+        $query = $this->db->get(); 
+        return $query->result_array();
+      }
 }
