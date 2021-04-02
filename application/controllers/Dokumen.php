@@ -40,7 +40,7 @@ class Dokumen extends CI_Controller {
         $this->load->library('upload',$config);
 
         if($this->upload->do_upload('image')){
-          print_r($this->upload->data('file_name'));
+          
           $id=$this->input->post("id_dokumen");
 
           $input=[
