@@ -17,7 +17,7 @@
                         for(i=0; i<data.length; i++){
                             html += '<option value='+data[i]+'>'+data[i]+'</option>';
                         }
-                        $('#sub_category').html(html);
+                        $('#bulan').html(html);
  
                     }
                 });
