@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MPenerimaan extends CI_Model {
     public function getAll(){
-        $query = $this->db->get('Penerimaan')->result_array();
-        // print_r($query);die;
-        return $query;
+      $this->db->select('*');
+      $this->db->from('Penerimaan');
+      $this->db->join('parameter','parameter.Id_Paramater = Penerimaan.fk_parameter');      
+      $query = $this->db->get()->result_array();
+      return $query;
       }
 
       function Simpan_Penerimaan($data_penerimaan,$id_penerimaan){
