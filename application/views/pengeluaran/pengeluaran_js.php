@@ -17,7 +17,7 @@ function Change(){
     var nominal=$(this).data('nominal');
     var id_parameter=$(this).data('id_parameter');
     var nama_parameter=$(this).data('nama_parameter');
-    console.log(id,tanggal,nominal,id_parameter,nama_parameter);
+    // console.log(id,tanggal,nominal,id_parameter,nama_parameter);
     $("#id_pengeluaran").val(id);
     $("#id_pengeluaran").attr("readonly",true);
     $("#id_pengeluaran").attr("value",id);
