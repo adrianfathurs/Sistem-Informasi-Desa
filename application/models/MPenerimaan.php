@@ -43,4 +43,14 @@ class MPenerimaan extends CI_Model {
         $query = $this->db->get();
         return $query->result();
       }
+
+      function getDataPenerimaan($bulan,$tahun){
+        $this->db->select('*');
+        $this->db->from('Penerimaan');
+        $this->db->join('parameter','parameter.Id_Paramater = Penerimaan.fk_parameter'); 
+        $this->db->where('month(Tanggal_Penerimaan)',$bulan);
+        $this->db->where('year(Tanggal_Penerimaan)',$tahun);
+        $query = $this->db->get()->result_array();
+        return $query;
+      }
 }

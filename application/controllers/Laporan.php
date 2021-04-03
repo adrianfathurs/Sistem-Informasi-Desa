@@ -6,6 +6,7 @@ class Laporan extends CI_Controller {
         parent :: __construct();
         $this->load->model("MPenerimaan"); 
         $this->load->model("MParameter");        
+        $this->load->model("MPengeluaran"); 
     }
 
     function index(){
@@ -57,4 +58,36 @@ class Laporan extends CI_Controller {
 		$final_convert =  $month;
 		return $final_convert;
 	}
+
+    function form(){
+        $input = $this->input->post(NULL,TRUE);
+        extract($input);  
+        // print_r($input);die;
+        if($this->input->post("submit")=="penerimaan"){ 
+            $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($bulan,$tahun);
+            if($data['dataPenerimaan']){
+            $this->load->library('pdf');
+            $this->pdf->setPaper('A4', 'landscape');
+            $this->pdf->filename = "Laporan Penerimaan.pdf";
+            $this->pdf->load_view('laporan/pdf_penerimaan', $data);
+            }else{                
+                
+                $this->session->set_flashdata('error',"Data Penerimaan pada bulan $bulan tahun $tahun tidak ada ");
+                redirect('laporan');
+            }
+        }else if($this->input->post("submit")=="pengeluaran"){ 
+            $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($bulan,$tahun);
+            if($data['dataPengeluaran']){
+            $this->load->library('pdf');
+            $this->pdf->setPaper('A4', 'landscape');
+            $this->pdf->filename = "Laporan Pengeluaran.pdf";
+            $this->pdf->load_view('laporan/pdf_pengeluaran', $data);
+            }else{
+                $this->session->set_flashdata('error',"Data Pengeluaran pada bulan $bulan tahun $tahun tidak ada ");
+                redirect('laporan');
+            }
+        }else{
+            echo "kas";
+        }
+    }
 }
