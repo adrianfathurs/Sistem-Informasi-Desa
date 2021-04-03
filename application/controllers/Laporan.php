@@ -89,7 +89,7 @@ class Laporan extends CI_Controller {
         }else{
             $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($bulan,$tahun);
             $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($bulan,$tahun);
-            if($data['dataPengeluaran']){
+            if($data['dataPengeluaran'] && $data['dataPenerimaan']){
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');
             $this->pdf->filename = "Laporan Kas Umum.pdf";
