@@ -1,4 +1,4 @@
-
+<script src="<?php echo base_url() ?>assets/js/autoNumeric.js" ></script>
 <script>
 $(document).ready( function () {
     $('#table_id').DataTable();
@@ -26,5 +26,8 @@ function Change(){
     $("#nama_parameter").val(nama_parameter);
     $("#nominal").val(nominal);
 });
+    $(document).ready(function() {
+			$('#nominal').autoNumeric('init');			
+		});
 
 </script>
