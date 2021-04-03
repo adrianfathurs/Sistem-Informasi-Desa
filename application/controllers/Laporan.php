@@ -87,7 +87,17 @@ class Laporan extends CI_Controller {
                 redirect('laporan');
             }
         }else{
-            echo "kas";
+            $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($bulan,$tahun);
+            $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($bulan,$tahun);
+            if($data['dataPengeluaran']){
+            $this->load->library('pdf');
+            $this->pdf->setPaper('A4', 'landscape');
+            $this->pdf->filename = "Laporan Kas Umum.pdf";
+            $this->pdf->load_view('laporan/pdf_kasUmum', $data);
+            }else{
+                $this->session->set_flashdata('error',"Data Kas Umum pada bulan $bulan tahun $tahun tidak ada ");
+                redirect('laporan');
+            }
         }
     }
 }
