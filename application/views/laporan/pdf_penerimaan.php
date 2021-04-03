@@ -29,8 +29,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <td><?php echo $item["fk_Parameter"]?></td>   
                     <td><?php echo $item["Nama_Parameter"]?></td>                                 
                 </tr>
+                <?php endforeach;?>
+                <tr>
+                    <td>Total Penerimaan</td>
+                    <td></td>
+                    <td></td>
+                    <td><?php echo "Rp. " ; echo number_format($total_Penerimaan->total, 2, ".", ",")?></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </tbody>
-        <?php endforeach;?>
 	</table>
 </body>
 </html>

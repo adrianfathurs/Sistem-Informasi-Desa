@@ -65,6 +65,7 @@ class Laporan extends CI_Controller {
         // print_r($input);die;
         if($this->input->post("submit")=="penerimaan"){ 
             $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($bulan,$tahun);
+            $data['total_Penerimaan'] = $this->MPenerimaan->total_Penerimaan($bulan,$tahun);
             if($data['dataPenerimaan']){
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');
@@ -77,6 +78,7 @@ class Laporan extends CI_Controller {
             }
         }else if($this->input->post("submit")=="pengeluaran"){ 
             $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($bulan,$tahun);
+            $data['total_Pengeluaran'] = $this->MPengeluaran->total_Pengeluaran($bulan,$tahun);            
             if($data['dataPengeluaran']){
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');

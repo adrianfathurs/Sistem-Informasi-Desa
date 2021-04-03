@@ -37,4 +37,13 @@ class MPengeluaran extends CI_Model {
         $query = $this->db->get()->result_array();    
         return $query;
       }
+
+      function total_Pengeluaran($bulan,$tahun){       
+        $this->db->select('SUM(Nominal) as total');
+        $this->db->from('Pengeluaran');
+        $this->db->where('month(Tanggal_Pengeluaran)',$bulan);
+        $this->db->where('year(Tanggal_Pengeluaran)',$tahun);
+        $query = $this->db->get()->row();
+        return $query;
+      }
 }
