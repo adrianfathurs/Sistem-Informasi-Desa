@@ -5,7 +5,7 @@ class MPengeluaran extends CI_Model {
     public function getAll(){
       $this->db->select('*');
       $this->db->from('Pengeluaran');
-      $this->db->join('parameter','parameter.Id_Paramater = Pengeluaran.fk_parameter');      
+      $this->db->join('parameter','parameter.Id_Parameter = Pengeluaran.fk_parameter');      
       $query = $this->db->get()->result_array();
       return $query;
       }

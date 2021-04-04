@@ -5,7 +5,7 @@ class MPenerimaan extends CI_Model {
     public function getAll(){
       $this->db->select('*');
       $this->db->from('Penerimaan');
-      $this->db->join('parameter','parameter.Id_Paramater = Penerimaan.fk_parameter');      
+      $this->db->join('parameter','parameter.Id_Parameter = Penerimaan.fk_parameter');      
       $query = $this->db->get()->result_array();
       return $query;
       }

@@ -26,7 +26,7 @@ class Laporan extends CI_Controller {
     
     function get_bulan(){
         $data = $this->input->post('id',true);        
-
+        var_dump($data);
         
 
 
