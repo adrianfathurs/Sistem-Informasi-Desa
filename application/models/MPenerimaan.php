@@ -31,8 +31,35 @@ class MPenerimaan extends CI_Model {
       function getTahun(){
         $this->db->select('*');
         $this->db->from('Penerimaan');
-        $this->db->distinct('Tanggal_Penerimaan');
+        $this->db->group_by('year(Tanggal_Penerimaan)');
         $query = $this->db->get(); 
         return $query->result_array();
+      }
+
+      function getBulan($bulan){
+        $this->db->select('Tanggal_Penerimaan');
+        $this->db->from('Penerimaan');
+        $this->db->where('year(Tanggal_Penerimaan)',$bulan);
+        $query = $this->db->get();
+        return $query->result();
+      }
+
+      function getDataPenerimaan($bulan,$tahun){
+        $this->db->select('*');
+        $this->db->from('Penerimaan');
+        $this->db->join('parameter','parameter.Id_Paramater = Penerimaan.fk_parameter'); 
+        $this->db->where('month(Tanggal_Penerimaan)',$bulan);
+        $this->db->where('year(Tanggal_Penerimaan)',$tahun);
+        $query = $this->db->get()->result_array();
+        return $query;
+      }
+
+      function total_Penerimaan($bulan,$tahun){       
+        $this->db->select('SUM(Nominal) as total');
+        $this->db->from('Penerimaan');
+        $this->db->where('month(Tanggal_Penerimaan)',$bulan);
+        $this->db->where('year(Tanggal_Penerimaan)',$tahun);
+        $query = $this->db->get()->row();
+        return $query;
       }
 }

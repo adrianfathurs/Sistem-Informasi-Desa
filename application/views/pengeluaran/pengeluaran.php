@@ -42,7 +42,7 @@
                 <input type="date" name="tanggal_pengeluaran" id="tanggal_pengeluaran">
             </p>
             <p>           
-                <input type="text" id="nama_parameter" name="nama_parameter" readonly>
+                <input type="text" id="nama_parameter" name="nama_parameter" placeholder="Nama Parameter" readonly>
             </p>
             <p>
             <label for="">Nominal</label>
@@ -90,13 +90,13 @@
                           <td><?php echo $i++?></td>
                           <td><?php echo $item["Id_Pengeluaran"]?></td>
                           <td><?php echo $item["Tanggal_Pengeluaran"]?></td>
-                          <td><?php echo $item["Nominal"]?></td>
+                          <td><?php echo "Rp. " ; echo number_format($item["Nominal"], 2, ".", ",")?></td>
                           <td><?php echo $item["fk_Parameter"]?></td>   
                           <td><?php echo $item["Nama_Parameter"]?></td>    
                           <td><button style="width:100%" id="btnEdit"
                                       data-id="<?php echo $item["Id_Pengeluaran"] ?>"
                                       data-tanggal="<?php echo $item["Tanggal_Pengeluaran"] ?>"
-                                      data-nominal="<?php echo $item["Nominal"] ?>"
+                                      data-nominal="<?php echo number_format($item["Nominal"], 2, ".", ",") ?>"
                                       data-id_parameter="<?php echo $item["fk_Parameter"] ?>"
                                       data-nama_parameter="<?php echo $item["Nama_Parameter"] ?>"
                                       >edit</button></td>    

@@ -26,7 +26,10 @@ class Pengeluaran extends CI_Controller {
     function form(){      
         $input = $this->input->post(NULL,TRUE);
         extract($input);   
-        // print_r($input);die;
+        
+        $nominal = $this->convert_to_number($nominal);
+		$nominal = (int)$nominal/100;
+
         if($this->input->post("submit")=="Simpan"){            
             $data_pengeluaran = [
                 'Id_Pengeluaran ' => $id_pengeluaran,
@@ -45,4 +48,9 @@ class Pengeluaran extends CI_Controller {
             redirect('dashboard');
         }
     }
+
+    public function convert_to_number($rupiah)
+	{
+		return preg_replace("/[^0-9]/","", $rupiah);
+	}
 }

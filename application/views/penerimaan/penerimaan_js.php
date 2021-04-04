@@ -1,4 +1,4 @@
-
+<script src="<?php echo base_url() ?>assets/js/autoNumeric.js" ></script>
 <script>
 $(document).ready( function () {
     $('#table_id').DataTable();
@@ -17,7 +17,7 @@ function Change(){
     var nominal=$(this).data('nominal');
     var id_parameter=$(this).data('id_parameter');
     var nama_parameter=$(this).data('nama_parameter');
-    console.log(id,tanggal,nominal,id_parameter,nama_parameter);
+    // console.log(id,tanggal,nominal,id_parameter,nama_parameter);
     $("#id_penerimaan").val(id);
     $("#id_penerimaan").attr("readonly",true);
     $("#id_penerimaan").attr("value",id);
@@ -26,5 +26,8 @@ function Change(){
     $("#nama_parameter").val(nama_parameter);
     $("#nominal").val(nominal);
 });
+    $(document).ready(function() {
+			$('#nominal').autoNumeric('init');			
+		});
 
 </script>
