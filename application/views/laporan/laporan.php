@@ -26,7 +26,7 @@
 					echo '</div>';
 				}
 				?>        
-        <h4 class="text-center"><b>Penerimaan</b></h4>      
+        <h4 class="text-center"><b>Laporan</b></h4>      
       <div class="row">
       <div class="contain">
         <div class="wrapper">         

@@ -61,10 +61,10 @@
                 <button class="btn btn-secondary"><a href="<?php echo site_url("Dashboard")?>" style="color:white;text-decoration:none;">Kembali</a></button>
                 </div>
                 <div class="col">
-                  <button type="submit" value="upload" class="btn btn-primary">Simpan</button>
+                  <button type="submit" name="submit" value="upload" class="btn btn-primary">Simpan</button>
                 </div>
                 <div class="col">
-                  <button type="submit" value="hapus" class="btn btn-danger">Hapus</button>
+                  <button type="submit" name="submit" value="hapus" class="btn btn-danger">Hapus</button>
                 </div>
               </div>
             </center>

@@ -11,7 +11,7 @@ class MParameter extends CI_Model {
         $this->db->from('Parameter');
         $this->db->where('Nama_Parameter',$nama_parameter);
         $query = $this->db->get()->row();
-        return $query->Id_Paramater;
+        return $query->Id_Parameter;
     }
     public function save($id_parameter,$input){
         $this->db->where('Id_Parameter', $id_parameter);

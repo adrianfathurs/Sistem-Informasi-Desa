@@ -20,14 +20,15 @@ class MPerangkat_Desa extends CI_Model {
         $this->db->where('Id_PD', $input["Id_PD"]);
         $query=$this->db->from('perangkat_desa');
         $data = $query->get()->row();
-        if($data){
+        var_dump($data);
+         if($data){
         $this->db->where('Id_PD', $input["Id_PD"]);
         $this->db->update('perangkat_desa', $input);
-        return $data;
+        
         }else{
         $this->db->insert('perangkat_desa', $input);
         
-        }
+        } 
     }
     //delete data didatabase berdasarkan id_PD
     function deletedin($id_PD){

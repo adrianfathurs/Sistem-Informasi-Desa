@@ -31,6 +31,7 @@ class PerangkatDesa extends CI_Controller {
     redirect("PerangkatDesa");
   }
   public function formPerangkat(){
+    var_dump($this->input->post("submit"));
     if($this->input->post("submit")=="upload"){
       $input=[
         "Id_PD"=>$this->input->post("id_PD"),
@@ -47,7 +48,7 @@ class PerangkatDesa extends CI_Controller {
         $id_PD=$this->input->post("id_PD");
         $this->deletedData($id_PD);
         
-      }
+      } 
 
 
     }

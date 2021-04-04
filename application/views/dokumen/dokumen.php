@@ -34,7 +34,7 @@
               </div>
               <div class="mb-2">
               <label for="fileDokumen" class="form-label">Browse </label>
-              <input class="form-control"  type="file" id="image" name="image" required >
+              <input class="form-control"  type="file" id="image" name="image"  >
               </div>
             <center>
             <div class="container mb-2">

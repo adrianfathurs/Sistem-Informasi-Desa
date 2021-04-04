@@ -33,7 +33,7 @@
                 <select id="select_parameter" name="id_parameter" onChange="Change()">
                 <option disabled selected> Select ID Parameter</option>
                   <?php foreach ($dataParameter as $parameter): ?>
-                    <option value="<?php echo $parameter['Nama_Parameter']?>"> <?php echo $parameter['Id_Paramater'] ?> </option>
+                    <option value="<?php echo $parameter['Nama_Parameter']?>"> <?php echo $parameter['Id_Parameter'] ?> </option>
                   <?php endforeach;?>
                 </select>
             </p>

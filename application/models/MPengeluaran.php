@@ -31,7 +31,7 @@ class MPengeluaran extends CI_Model {
       function getDataPengeluaran($bulan,$tahun){
         $this->db->select('*');
         $this->db->from('Pengeluaran');
-        $this->db->join('parameter','parameter.Id_Paramater = Pengeluaran.fk_parameter'); 
+        $this->db->join('parameter','parameter.Id_Parameter = Pengeluaran.fk_parameter'); 
         $this->db->where('month(Tanggal_Pengeluaran)',$bulan);
         $this->db->where('year(Tanggal_Pengeluaran)',$tahun);
         $query = $this->db->get()->result_array();    
