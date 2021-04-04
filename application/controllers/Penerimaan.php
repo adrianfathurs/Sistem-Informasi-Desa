@@ -26,7 +26,9 @@ class Penerimaan extends CI_Controller {
     function form(){      
         $input = $this->input->post(NULL,TRUE);
         extract($input);   
-        // print_r($input);die;
+        $nominal = $this->convert_to_number($nominal);
+		$nominal = (int)$nominal/100;
+
         if($this->input->post("submit")=="Simpan"){            
             $data_penerimaan = [
                 'Id_Penerimaan ' => $id_penerimaan,
@@ -45,4 +47,9 @@ class Penerimaan extends CI_Controller {
             redirect('dashboard');
         }
     }
+
+    public function convert_to_number($rupiah)
+	{
+		return preg_replace("/[^0-9]/","", $rupiah);
+	}
 }
