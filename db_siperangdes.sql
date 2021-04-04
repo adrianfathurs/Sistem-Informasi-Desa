@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2021 at 03:46 PM
+-- Generation Time: Apr 04, 2021 at 10:40 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.10
 
@@ -35,14 +35,6 @@ CREATE TABLE `dokumen` (
   `fk_PD` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `dokumen`
---
-
-INSERT INTO `dokumen` (`Id_Dok`, `Nama_Dokumen`, `File_Name`, `fk_PD`) VALUES
-(12, 'uyuude', 'Invoice-546523.pdf', 1),
-(14, 'uyuude', 'Vania1.jpg', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -50,9 +42,16 @@ INSERT INTO `dokumen` (`Id_Dok`, `Nama_Dokumen`, `File_Name`, `fk_PD`) VALUES
 --
 
 CREATE TABLE `parameter` (
-  `Id_Paramater` int(5) NOT NULL,
+  `Id_Parameter` int(5) NOT NULL,
   `Nama_Parameter` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `parameter`
+--
+
+INSERT INTO `parameter` (`Id_Parameter`, `Nama_Parameter`) VALUES
+(1, 'biaya rumah');
 
 -- --------------------------------------------------------
 
@@ -98,6 +97,13 @@ CREATE TABLE `perangkat_desa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `perangkat_desa`
+--
+
+INSERT INTO `perangkat_desa` (`Id_PD`, `Nama`, `Tanggal_lahir`, `Jabatan`, `Pendidikan`, `Password`) VALUES
+(12312, 'uy', '2021-04-05', 'Kepala Desa', 'SMU', '123123');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -111,7 +117,7 @@ ALTER TABLE `dokumen`
 -- Indexes for table `parameter`
 --
 ALTER TABLE `parameter`
-  ADD PRIMARY KEY (`Id_Paramater`);
+  ADD PRIMARY KEY (`Id_Parameter`);
 
 --
 -- Indexes for table `penerimaan`
