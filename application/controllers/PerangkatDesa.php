@@ -37,7 +37,7 @@ class PerangkatDesa extends CI_Controller {
         "Id_PD"=>$this->input->post("id_PD"),
         "Nama"=>$this->input->post("nama"),
         "Tanggal_Lahir"=>$this->input->post("tgl_lahir"),
-        "Jabatan"=>$this->input->post("jabatan"),
+        "Jabatan"=>strtolower($this->input->post("jabatan")),
         "Pendidikan"=>$this->input->post("pendidikan"),
         "Password"=>$this->input->post("password"),
       ];

@@ -36,5 +36,20 @@ class MPerangkat_Desa extends CI_Model {
         $this->db->delete("perangkat_desa");
         return true;
     }
+
+    function cariKepalaDesa(){
+        $this->db->select('*');
+        $this->db->from('perangkat_desa');
+        $this->db->where('Jabatan',"kepala desa");
+        $query=$this->db->get()->row();
+        return $query;
+    }
+    function cariBendahara(){
+        $this->db->select('*');
+        $this->db->from('perangkat_desa');
+        $this->db->where('Jabatan',"bendahara");
+        $query=$this->db->get()->row();
+        return $query;
+    }
 	
 }

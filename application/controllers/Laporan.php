@@ -7,6 +7,8 @@ class Laporan extends CI_Controller {
         $this->load->model("MPenerimaan"); 
         $this->load->model("MParameter");        
         $this->load->model("MPengeluaran"); 
+        $this->load->model("MKas"); 
+        $this->load->model("MPerangkat_Desa"); 
     }
 
     function index(){
@@ -56,14 +58,93 @@ class Laporan extends CI_Controller {
             $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($tanggal_awal,$tanggal_akhir);
             $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($tanggal_awal,$tanggal_akhir);
             if($data['dataPengeluaran'] && $data['dataPenerimaan']){
+            //pengurangan 1 bulan sebelumnya
+                $date = new DateTime($tanggal_awal);
+                $month=$date->format('n')-1;
+                $beforeMonths=$this->month($month);
+                $data['beforeMonth']=$beforeMonths;
+                $data['totNomBulSebelum']=$this->hitungTotNomSebelum($month); 
+                
+            //Perhitungan bulan ini
+                $date = date('n');
+                $thisMonth=$this->month($date);
+                $data['thisMonth']=$thisMonth;
+                $data['totNomBulSekarang']=$this->hitungTotNomSekarang($date);
+                
+            //Perhitungan dari tanggal ini sampai tanggal itu
+                $totPeng=$this->MPengeluaran->total_Pengeluaran($tanggal_awal,$tanggal_akhir);
+                $totPen=$this->MPenerimaan->total_Penerimaan($tanggal_awal,$tanggal_akhir);
+                $data['totSesuaiTanggal']=$totPen->total-$totPeng->total;
+                $data['tanggalAwal']=$tanggal_awal;
+                $data['tanggalAkhir']=$tanggal_akhir;
+            //Perangkat Desa
+                $kepalaDesa=$this->MPerangkat_Desa->cariKepalaDesa();
+                if($kepalaDesa){
+                    $data['kepalaDesa']=$kepalaDesa->Nama;
+                }else{
+                    $data['kepalaDesa']="";
+                }
+                
+                $bendahara=$this->MPerangkat_Desa->cariBendahara();
+                if($kepalaDesa){
+                    $data['bendahara']=$bendahara->Nama;
+                }else{
+                    $data['bendahara']="";
+                }
+                
+
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');
             $this->pdf->filename = "Laporan Kas Umum.pdf";
-            $this->pdf->load_view('laporan/pdf_kasUmum', $data);
+            $this->pdf->load_view('laporan/pdf_kasUmum', $data);    
             }else{
                 $this->session->set_flashdata('error',"Data Kas Umum pada tanggal $tanggal_awal sampai tanggal $tahun tidak ada ");
                 redirect('laporan');
             }
+        }
+    }
+    function hitungTotNomSebelum($month){
+            $responseTotalNominalPenerimaan=$this->MPenerimaan->MonthTotalNominal($month);
+            $responseTotalNominalPengeluaran=$this->MPengeluaran->MonthTotalNominal($month);
+            $totalBulanLalu= (int)$responseTotalNominalPenerimaan->totPenerimaan-(int)$responseTotalNominalPengeluaran->totPengeluaran;
+            return $totalBulanLalu;            
+    }
+    function hitungTotNomSekarang($month){
+            $responseTotalNominalPenerimaan=$this->MPenerimaan->MonthTotalNominal($month);
+            $responseTotalNominalPengeluaran=$this->MPengeluaran->MonthTotalNominal($month);
+            $totalBulanSekarang= (int)$responseTotalNominalPenerimaan->totPenerimaan-(int)$responseTotalNominalPengeluaran->totPengeluaran;
+            return $totalBulanSekarang;            
+    }
+    function month($month){
+        switch ($month) {
+            case 1:
+                $bulan="January";
+                return $bulan;
+                break;
+            
+            case 2:
+                $bulan="Febuari";
+                return $bulan;
+                break;
+            
+            case 3:
+                $bulan="Maret";
+                return $bulan;
+                break;
+            
+            case 4:
+                $bulan="April";
+                return $bulan;
+                break;
+            
+            case 5:
+                $bulan="Mei";
+                return $bulan;
+                break;
+            
+            default:
+                # code...
+                break;
         }
     }
 }
