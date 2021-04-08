@@ -28,21 +28,21 @@ class MPengeluaran extends CI_Model {
         $this->db->delete('Pengeluaran', array('Id_Pengeluaran' => $id_pengeluaran));
       }
 
-      function getDataPengeluaran($bulan,$tahun){
+      function getDataPengeluaran($tgl_awal,$tgl_akhir){
         $this->db->select('*');
         $this->db->from('Pengeluaran');
         $this->db->join('parameter','parameter.Id_Parameter = Pengeluaran.fk_parameter'); 
-        $this->db->where('month(Tanggal_Pengeluaran)',$bulan);
-        $this->db->where('year(Tanggal_Pengeluaran)',$tahun);
+        $this->db->where('Tanggal_Pengeluaran >=',$tgl_awal);
+        $this->db->where('Tanggal_Pengeluaran <=',$tgl_akhir);
         $query = $this->db->get()->result_array();    
         return $query;
       }
 
-      function total_Pengeluaran($bulan,$tahun){       
+      function total_Pengeluaran($tgl_awal,$tgl_akhir){       
         $this->db->select('SUM(Nominal) as total');
         $this->db->from('Pengeluaran');
-        $this->db->where('month(Tanggal_Pengeluaran)',$bulan);
-        $this->db->where('year(Tanggal_Pengeluaran)',$tahun);
+        $this->db->where('Tanggal_Pengeluaran >=',$tgl_awal);
+        $this->db->where('Tanggal_Pengeluaran <=',$tgl_akhir);
         $query = $this->db->get()->row();
         return $query;
       }

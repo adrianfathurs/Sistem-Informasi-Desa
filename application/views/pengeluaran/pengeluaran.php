@@ -46,7 +46,7 @@
             </p>
             <p>
             <label for="">Nominal</label>
-                <input type="text" name="nominal" id="nominal">
+                <input type="text" name="nominal" id="nominal" placeholder=" Rp. ">
             </p>
             </div>
             <center>

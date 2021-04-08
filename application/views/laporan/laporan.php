@@ -33,33 +33,12 @@
             <form id="form-dokumen" action="<?php echo base_url('laporan/form')?>" method="POST" enctype="multipart/form-data">
             <div class="form">
             <p>
-                <label for="">Bulan</label>
-                <select name="bulan" id="bulan">
-                <option disabled selected> Pilih Bulan</option>     
-                <option value="1">Januari</option>             
-                <option value="2">Februari</option>             
-                <option value="3">Maret</option>             
-                <option value="4">April</option>             
-                <option value="5">Mei</option>             
-                <option value="6">Juni</option>             
-                <option value="7">Juli</option>             
-                <option value="8">Agustus</option>             
-                <option value="9">September</option>             
-                <option value="10">Oktober</option>             
-                <option value="11">November</option>             
-                <option value="12">Desember</option>             
-                </select>
+                <label for="">Periode Akhir</label>
+                <input type="date" name="tanggal_awal">
             </p>
             <p>
-                <label for="">Tahun</label>
-                <select id="tahun" name="tahun">
-                <option disabled selected> Pilih Tahun</option>
-                  <!-- <?php foreach ($dataPenerimaan as $parameter): ?>
-                    <option value="<?php echo  substr($parameter['Tanggal_Penerimaan'],0,4);?>"> <?php echo substr($parameter['Tanggal_Penerimaan'],0,4); ?> </option>
-                  <?php endforeach;?> --> 
-                    <option value="2021">2021</option>
-                    <option value="2020">2020</option>
-                    <option value="2019">2019</option>                    
+                <label for="">periode akhir</label>                
+                <input type="date" name="tanggal_akhir">                 
                 </select>
             </p>
             </div>
