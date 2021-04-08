@@ -32,11 +32,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php endforeach;?>
                 <tr>
                     <td>Total Pengeluarn</td>
-                    <td></td>
-                    <td></td>
-                    <td><?php echo "Rp. " ; echo number_format($total_Pengeluaran->total, 2, ".", ",")?></td>
-                    <td></td>
-                    <td></td>
+                    <td colspan="3" align="right"><?php echo "Rp. " ; echo number_format($total_Pengeluaran->total, 2, ".", ",")?></td>
+                    <td colspan="2"></td>
                 </tr>
             </tbody>
 	</table>

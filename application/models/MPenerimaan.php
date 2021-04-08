@@ -27,38 +27,21 @@ class MPenerimaan extends CI_Model {
       function hapus_penerimaan($id_penerimaan){
         $this->db->delete('Penerimaan', array('Id_Penerimaan' => $id_penerimaan));
       }
-
-      function getTahun(){
-        $this->db->select('*');
-        $this->db->from('Penerimaan');
-        $this->db->group_by('year(Tanggal_Penerimaan)');
-        $query = $this->db->get(); 
-        return $query->result_array();
-      }
-
-      function getBulan($bulan){
-        $this->db->select('Tanggal_Penerimaan');
-        $this->db->from('Penerimaan');
-        $this->db->where('year(Tanggal_Penerimaan)',$bulan);
-        $query = $this->db->get();
-        return $query->result();
-      }
-
-      function getDataPenerimaan($bulan,$tahun){
+      function getDataPenerimaan($tgl_awal,$tgl_akhir){
         $this->db->select('*');
         $this->db->from('Penerimaan');
         $this->db->join('parameter','parameter.Id_Parameter = Penerimaan.fk_parameter'); 
-        $this->db->where('month(Tanggal_Penerimaan)',$bulan);
-        $this->db->where('year(Tanggal_Penerimaan)',$tahun);
+        $this->db->where('Tanggal_Penerimaan >=',$tgl_awal);
+        $this->db->where('Tanggal_Penerimaan <=',$tgl_akhir);
         $query = $this->db->get()->result_array();
         return $query;
       }
 
-      function total_Penerimaan($bulan,$tahun){       
+      function total_Penerimaan($tgl_awal,$tgl_akhir){       
         $this->db->select('SUM(Nominal) as total');
         $this->db->from('Penerimaan');
-        $this->db->where('month(Tanggal_Penerimaan)',$bulan);
-        $this->db->where('year(Tanggal_Penerimaan)',$tahun);
+        $this->db->where('Tanggal_Penerimaan >=',$tgl_awal);
+        $this->db->where('Tanggal_Penerimaan <=',$tgl_akhir);
         $query = $this->db->get()->row();
         return $query;
       }
