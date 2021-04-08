@@ -33,6 +33,23 @@ class Laporan extends CI_Controller {
             $data['dataPenerimaan'] = $this->MPenerimaan->getDataPenerimaan($tanggal_awal,$tanggal_akhir);
             $data['total_Penerimaan'] = $this->MPenerimaan->total_Penerimaan($tanggal_awal,$tanggal_akhir);
             if($data['dataPenerimaan']){
+            //tanggal sekarang dan tanggal esok
+                $data['tanggalAwal']=$tanggal_awal;
+                $data['tanggalAkhir']=$tanggal_akhir;
+            //Perangkat Desa
+                $kepalaDesa=$this->MPerangkat_Desa->cariKepalaDesa();
+                if($kepalaDesa){
+                    $data['kepalaDesa']=$kepalaDesa->Nama;
+                }else{
+                    $data['kepalaDesa']="";
+                }
+                
+                $bendahara=$this->MPerangkat_Desa->cariBendahara();
+                if($kepalaDesa){
+                    $data['bendahara']=$bendahara->Nama;
+                }else{
+                    $data['bendahara']="";
+                }
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');
             $this->pdf->filename = "Laporan Penerimaan.pdf";
@@ -46,10 +63,28 @@ class Laporan extends CI_Controller {
             $data['dataPengeluaran'] = $this->MPengeluaran->getDataPengeluaran($tanggal_awal,$tanggal_akhir);
             $data['total_Pengeluaran'] = $this->MPengeluaran->total_Pengeluaran($tanggal_awal,$tanggal_akhir);            
             if($data['dataPengeluaran']){
+            //tanggal sekarang dan tanggal esok
+                $data['tanggalAwal']=$tanggal_awal;
+                $data['tanggalAkhir']=$tanggal_akhir;
+            //Perangkat Desa
+                $kepalaDesa=$this->MPerangkat_Desa->cariKepalaDesa();
+                if($kepalaDesa){
+                    $data['kepalaDesa']=$kepalaDesa->Nama;
+                }else{
+                    $data['kepalaDesa']="";
+                }
+                
+                $bendahara=$this->MPerangkat_Desa->cariBendahara();
+                if($kepalaDesa){
+                    $data['bendahara']=$bendahara->Nama;
+                }else{
+                    $data['bendahara']="";
+                }
             $this->load->library('pdf');
             $this->pdf->setPaper('A4', 'landscape');
             $this->pdf->filename = "Laporan Pengeluaran.pdf";
             $this->pdf->load_view('laporan/pdf_pengeluaran', $data);
+            
             }else{
                 $this->session->set_flashdata('error',"Data Pengeluaran pada tanggal $tanggal_awal sampai tanggal $tanggal_akhir tidak ada ");
                 redirect('laporan');
