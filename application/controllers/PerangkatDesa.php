@@ -13,7 +13,7 @@ class PerangkatDesa extends CI_Controller {
     $data['Nama'] = $this->session->userdata('Nama'); 
 	$data['is_login'] = $this->session->userdata('is_login'); 
 
-	if($data['is_login']== TRUE){
+	if($data['is_login']== TRUE && ($data['Id_PD'] == '4' || $data['Id_PD'] == '5')){
 		$data['header']="template/template_header.php";
 		$data['css']="perangkat/perangkatDesa_css";
 		$data['content']="perangkat/perangkatDesa.php";
@@ -22,7 +22,8 @@ class PerangkatDesa extends CI_Controller {
     $data["dataPerangkat"]=$this->MPerangkat_Desa->getAll();
 		$this->load->view('template/vtemplate',$data);	
 		} else {
-			redirect('Login');
+			$this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
 		}
 	}
   /* untuk mendelete data didatabase */

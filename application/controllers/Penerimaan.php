@@ -13,14 +13,19 @@ class Penerimaan extends CI_Controller {
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
 	$data['is_login'] = $this->session->userdata('is_login'); 
-    $data['header']="template/template_header.php";
-	$data['css']="penerimaan/penerimaan_css";
-    $data['js']="penerimaan/penerimaan_js";
-	$data['content']="penerimaan/penerimaan";	
-	$data['footer']="template/template_footer.php";	
-    $data['dataPenerimaan'] = $this->MPenerimaan->getAll();
-    $data['dataParameter'] = $this->MParameter->getAll();    
-    $this->load->view('template/vtemplate',$data);   
+    if($data['is_login']== TRUE && ($data['Id_PD'] == '3' || $data['Id_PD'] == '5')){
+            $data['header']="template/template_header.php";
+            $data['css']="penerimaan/penerimaan_css";
+            $data['js']="penerimaan/penerimaan_js";
+            $data['content']="penerimaan/penerimaan";	
+            $data['footer']="template/template_footer.php";	
+            $data['dataPenerimaan'] = $this->MPenerimaan->getAll();
+            $data['dataParameter'] = $this->MParameter->getAll();    
+            $this->load->view('template/vtemplate',$data);  
+        } else {
+            $this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
+        } 
     }
 
     function form(){      

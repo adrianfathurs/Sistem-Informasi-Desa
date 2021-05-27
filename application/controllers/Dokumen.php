@@ -17,7 +17,7 @@ class Dokumen extends CI_Controller {
     $data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
     $data['is_login'] = $this->session->userdata('is_login');
-    if($data['is_login']== TRUE){
+    if($data['is_login']== TRUE && ($data['Id_PD'] == '1' || $data['Id_PD'] == '4' || $data['Id_PD'] == '5' )){
       $data['header']="template/template_header.php";
       $data['css']="dokumen/dokumen_css";
       $data['content']="dokumen/dokumen.php";
@@ -26,7 +26,8 @@ class Dokumen extends CI_Controller {
       $data['dataDokumen']=$this->MDokumen->getAll();
       $this->load->view('template/vtemplate',$data); 
       } else {
-			redirect('Login');
+        $this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+        redirect('Dashboard');
 		}
   }
   /* function deletedFile merupakan fungsi yang digunakan untuk menghapus file lokal yang telah diupload 
