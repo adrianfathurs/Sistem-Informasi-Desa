@@ -19,12 +19,8 @@
 								aria-expanded="false">
 								<i class="fas fa-user-tie fa-2x"></i>
 							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li>
-									<hr class="dropdown-divider">
-								</li>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">								
+							
 								<li><a class="dropdown-item" href="<?php echo site_url('Login/LogOut')?>">Log Out</a></li>
 							</ul>
 						</div>
@@ -81,7 +77,7 @@
 							<div class="card">
 								<div class="card-body">
 									<h5 class="card-title"><b>Laporan</b></h5>
-									<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+									<p class="card-text">Laporan</p>
 									<a href="<?php echo site_url('laporan')?>" class="btn btn-primary">Laporan</a>
 								</div>
 							</div>
