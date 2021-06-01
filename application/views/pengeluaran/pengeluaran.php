@@ -84,8 +84,9 @@
                           <th></th>
                     </tr>
                   </thead>
-                <?php $i=1; foreach ($dataPengeluaran as $item): ?>
+                
                   <tbody>
+                  <?php $i=1; foreach ($dataPengeluaran as $item): ?>
                       <tr class="text-center">
                           <td><?php echo $i++?></td>
                           <td><?php echo $item["Id_Pengeluaran"]?></td>
@@ -101,8 +102,9 @@
                                       data-nama_parameter="<?php echo $item["Nama_Parameter"] ?>"
                                       >edit</button></td>    
                       </tr>
+                      <?php endforeach;?>
                   </tbody>
-                  <?php endforeach;?>
+                  
               </table>
             </div>
         </div>

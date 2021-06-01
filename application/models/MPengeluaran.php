@@ -34,6 +34,7 @@ class MPengeluaran extends CI_Model {
         $this->db->join('parameter','parameter.Id_Parameter = Pengeluaran.fk_parameter'); 
         $this->db->where('Tanggal_Pengeluaran >=',$tgl_awal);
         $this->db->where('Tanggal_Pengeluaran <=',$tgl_akhir);
+        $this->db->order_by("Tanggal_Pengeluaran","ASC");
         $query = $this->db->get()->result_array();    
         return $query;
       }
@@ -46,4 +47,12 @@ class MPengeluaran extends CI_Model {
         $query = $this->db->get()->row();
         return $query;
       }
+
+      public function MonthTotalNominal($Month){
+      $this->db->select('SUM(Nominal) as totPengeluaran');
+      $this->db->from('Pengeluaran');
+      $this->db->where('month(Tanggal_Pengeluaran)',$Month);
+      $query = $this->db->get()->row();
+        return $query; 
+    }
 }

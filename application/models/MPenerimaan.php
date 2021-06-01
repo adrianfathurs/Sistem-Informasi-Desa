@@ -33,6 +33,7 @@ class MPenerimaan extends CI_Model {
         $this->db->join('parameter','parameter.Id_Parameter = Penerimaan.fk_parameter'); 
         $this->db->where('Tanggal_Penerimaan >=',$tgl_awal);
         $this->db->where('Tanggal_Penerimaan <=',$tgl_akhir);
+        $this->db->order_by("Tanggal_Penerimaan","ASC");
         $query = $this->db->get()->result_array();
         return $query;
       }
@@ -45,4 +46,12 @@ class MPenerimaan extends CI_Model {
         $query = $this->db->get()->row();
         return $query;
       }
+
+      public function MonthTotalNominal($Month){
+      $this->db->select('SUM(Nominal) as totPenerimaan');
+      $this->db->from('Penerimaan');
+      $this->db->where('month(Tanggal_Penerimaan)',$Month);
+      $query = $this->db->get()->row();
+        return $query; 
+    }
 }
