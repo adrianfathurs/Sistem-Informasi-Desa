@@ -75,6 +75,30 @@ class Dokumen extends CI_Controller {
           print_r($this->upload->display_errors());
         } 
   }
+  public function uploadUpdate($response){
+        
+        var_dump($response);
+
+       
+          
+          $id=$this->input->post("id_dokumen");
+
+          $input=[
+            'Id_Dok'=>$this->input->post("id_dokumen"),
+            'Nama_Dokumen'=>$this->input->post("nama_dokumen"),
+            'File_Name'=>$response->File_Name,
+            'fk_PD'=>$this->session->userdata('Id_PD'),
+          ];
+          /* 
+            mengarahkan kemodel MDokumen dan diarahkan ke fungsi save
+          */
+          $response=$this->MDokumen->save($id,$input);
+          redirect("Dokumen");
+            
+          
+        
+        
+  }
   /* 
     fungsi deleteData digunakan untuk menghapus data yang ada didatabase
   */
@@ -91,7 +115,14 @@ class Dokumen extends CI_Controller {
   public function formDokumen() {
         if($this->input->post("submit")=="upload")
         {
-          $this->upload();
+          $id_Dok=$this->input->post('id_dokumen');
+          $response=$this->MDokumen->selectedById($id_Dok);
+          if($response){
+            $this->uploadUpdate($response);
+          }else{
+             $this->upload(); 
+
+          }
         }else{
           $id_Dok=$this->input->post("id_dokumen");
         
