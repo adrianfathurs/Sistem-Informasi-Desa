@@ -12,8 +12,9 @@ class Penerimaan extends CI_Controller {
     // Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
+    $data['Jabatan'] = $this->session->userdata('Jabatan');
 	$data['is_login'] = $this->session->userdata('is_login'); 
-    if($data['is_login']== TRUE && ($data['Id_PD'] == '3' || $data['Id_PD'] == '5')){
+    if($data['is_login']== TRUE && ($data['Jabatan'] == 'Kaur Keuangan' || $data['Jabatan'] == 'Admin')){
             $data['header']="template/template_header.php";
             $data['css']="penerimaan/penerimaan_css";
             $data['js']="penerimaan/penerimaan_js";
