@@ -12,6 +12,7 @@ class Dashboard extends CI_Controller {
 	// Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
+	$data['Jabatan'] = $this->session->userdata('Jabatan'); 
 	$data['is_login'] = $this->session->userdata('is_login'); 
 
 	if($data['is_login']== TRUE){

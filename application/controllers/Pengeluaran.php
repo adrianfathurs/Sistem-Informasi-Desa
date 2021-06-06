@@ -12,15 +12,21 @@ class Pengeluaran extends CI_Controller {
     // Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
+    $data['Jabatan'] = $this->session->userdata('Jabatan');
 	$data['is_login'] = $this->session->userdata('is_login'); 
-    $data['header']="template/template_header.php";
-	$data['css']="pengeluaran/pengeluaran_css";
-    $data['js']="pengeluaran/pengeluaran_js";
-	$data['content']="pengeluaran/pengeluaran";	
-	$data['footer']="template/template_footer.php";	
-    $data['dataPengeluaran'] = $this->MPengeluaran->getAll();
-    $data['dataParameter'] = $this->MParameter->getAll();    
-    $this->load->view('template/vtemplate',$data);   
+    if($data['is_login']== TRUE && ($data['Jabatan'] == 'Kaur Keuangan' || $data['Jabatan'] == 'Admin')){
+        $data['header']="template/template_header.php";
+        $data['css']="pengeluaran/pengeluaran_css";
+        $data['js']="pengeluaran/pengeluaran_js";
+        $data['content']="pengeluaran/pengeluaran";	
+        $data['footer']="template/template_footer.php";	
+        $data['dataPengeluaran'] = $this->MPengeluaran->getAll();
+        $data['dataParameter'] = $this->MParameter->getAll();    
+        $this->load->view('template/vtemplate',$data);  
+    } else {
+        $this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
+    } 
     }
 
     function form(){      

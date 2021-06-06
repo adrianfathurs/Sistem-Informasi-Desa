@@ -15,15 +15,21 @@ class Laporan extends CI_Controller {
     // Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
+    $data['Jabatan'] = $this->session->userdata('Jabatan');
 	$data['is_login'] = $this->session->userdata('is_login'); 
-    $data['header']="template/template_header.php";
-	$data['css']="laporan/laporan_css";
-    $data['js']="laporan/laporan_js";
-	$data['content']="laporan/laporan";	
-	$data['footer']="template/template_footer.php";	
-    $data['dataParameter'] = $this->MParameter->getAll();    
-    $this->load->view('template/vtemplate',$data);       
-     }
+    if($data['is_login']== TRUE && ($data['Jabatan'] == 'Kepala Desa' || $data['Jabatan'] == 'Kaur Keuangan' || $data['Jabatan'] == 'Admin' ) ){
+            $data['header']="template/template_header.php";
+            $data['css']="laporan/laporan_css";
+            $data['js']="laporan/laporan_js";
+            $data['content']="laporan/laporan";	
+            $data['footer']="template/template_footer.php";	
+            $data['dataParameter'] = $this->MParameter->getAll();    
+            $this->load->view('template/vtemplate',$data);       
+        } else {
+            $this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
+        }
+    }
     
     function form(){
         $input = $this->input->post(NULL,TRUE);

@@ -11,9 +11,10 @@ class Parameter extends CI_Controller {
 	// Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
   $data['Nama'] = $this->session->userdata('Nama'); 
+  $data['Jabatan'] = $this->session->userdata('Jabatan');
 	$data['is_login'] = $this->session->userdata('is_login'); 
 
-	if($data['is_login']== TRUE){
+	if($data['is_login']== TRUE && ($data['Jabatan'] == 'Sekretaris Desa' || $data['Jabatan'] == 'Admin')){
 		$data['header']="template/template_header.php";
 		$data['css']="parameter/parameter_css";
 		$data['content']="parameter/parameter.php";
@@ -22,7 +23,8 @@ class Parameter extends CI_Controller {
     $data["dataParameter"]=$this->MParameter->getAll();
 		$this->load->view('template/vtemplate',$data);	
 		} else {
-			redirect('Login');
+			$this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
 		}
 	}
   public function deleteData($id_parameter){

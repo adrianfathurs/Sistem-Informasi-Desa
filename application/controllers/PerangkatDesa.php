@@ -10,10 +10,11 @@ class PerangkatDesa extends CI_Controller {
 	public function index()	{
 	// Data Session
 	$data['Id_PD'] = $this->session->userdata('Id_PD'); 
-    $data['Nama'] = $this->session->userdata('Nama'); 
+  $data['Nama'] = $this->session->userdata('Nama'); 
+  $data['Jabatan'] = $this->session->userdata('Jabatan');
 	$data['is_login'] = $this->session->userdata('is_login'); 
 
-	if($data['is_login']== TRUE){
+	if($data['is_login']== TRUE && ($data['Jabatan'] == 'Sekretaris Desa' || $data['Jabatan'] == 'Admin')){
 		$data['header']="template/template_header.php";
 		$data['css']="perangkat/perangkatDesa_css";
 		$data['content']="perangkat/perangkatDesa.php";
@@ -22,7 +23,8 @@ class PerangkatDesa extends CI_Controller {
     $data["dataPerangkat"]=$this->MPerangkat_Desa->getAll();
 		$this->load->view('template/vtemplate',$data);	
 		} else {
-			redirect('Login');
+			$this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+            redirect('Dashboard');
 		}
 	}
   /* untuk mendelete data didatabase */

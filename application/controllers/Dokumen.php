@@ -13,11 +13,12 @@ class Dokumen extends CI_Controller {
   /* function index merupakan fungsi default yang dijalankan disaat Class Dokumen Dijalankan */
 	public function index()
 	{
-    	// Data Session
+    // Data Session
     $data['Id_PD'] = $this->session->userdata('Id_PD'); 
     $data['Nama'] = $this->session->userdata('Nama'); 
+    $data['Jabatan'] = $this->session->userdata('Jabatan'); 
     $data['is_login'] = $this->session->userdata('is_login');
-    if($data['is_login']== TRUE){
+    if($data['is_login']== TRUE && ($data['Jabatan'] == 'Kaur Perencanaan' || $data['Jabatan'] == 'Sekretaris Desa' || $data['Jabatan'] == 'Admin' )){
       $data['header']="template/template_header.php";
       $data['css']="dokumen/dokumen_css";
       $data['content']="dokumen/dokumen.php";
@@ -26,17 +27,18 @@ class Dokumen extends CI_Controller {
       $data['dataDokumen']=$this->MDokumen->getAll();
       $this->load->view('template/vtemplate',$data); 
       } else {
-			redirect('Login');
+        $this->session->set_flashdata('error', 'Akun anda tidak dapat mengakses fitur ini');
+        redirect('Dashboard');
 		}
   }
   /* function deletedFile merupakan fungsi yang digunakan untuk menghapus file lokal yang telah diupload 
     letak file yang dihapus ada dipath yang tertera didalam fungsi
   */
   public function deletedFile($query){
-    var_dump($query);
+    // print_r($query->File_Name);die;
     var_dump(delete_files('./upload/dokumen/'.$query->File_Name)); 
     unlink("./upload/dokumen/" .$query->File_Name);
-    var_dump('./upload/dokumen/'.$query->File_Name);
+    // var_dump('./upload/dokumen/'.$query->File_Name);
   }
   /* 
     function upload merupakan fungsi yang digunakan untuk mengupload file yang telah diinputkan oleh user
@@ -48,22 +50,31 @@ class Dokumen extends CI_Controller {
         $config['max_size']=0;
         
         $this->load->library('upload',$config);
+        $response=$this->MDokumen->selectedById($this->input->post("id_dokumen"));
 
-        if($this->upload->do_upload('image')){
+        if($this->upload->do_upload('image') || $response){
           
-          $id=$this->input->post("id_dokumen");
-
+        $id=$this->input->post("id_dokumen");   
+        if($this->upload->data('file_name')){          
           $input=[
             'Id_Dok'=>$this->input->post("id_dokumen"),
             'Nama_Dokumen'=>$this->input->post("nama_dokumen"),
             'File_Name'=>$this->upload->data('file_name'),
             'fk_PD'=>$this->session->userdata('Id_PD'),
           ];
+        }else{                    
+          $input=[
+            'Id_Dok'=>$this->input->post("id_dokumen"),
+            'Nama_Dokumen'=>$this->input->post("nama_dokumen"),            
+            'fk_PD'=>$this->session->userdata('Id_PD'),
+          ];
+        }
           /* 
             mengarahkan kemodel MDokumen dan diarahkan ke fungsi save
           */
           $response=$this->MDokumen->save($id,$input);
             if($response){
+              // print_r($response->File_Name);die;
               $this->deletedFile($response);
               redirect("Dokumen");
             }else{
@@ -124,16 +135,14 @@ class Dokumen extends CI_Controller {
 
           }
         }else{
-          $id_Dok=$this->input->post("id_dokumen");
-        
+          $id_Dok=$this->input->post("id_dokumen");          
           $this->deleteData($id_Dok);
         }
     }
     /* 
       fungsi download merupakan fungsi yang mengatur agar file dapat didownload melalui browser
     */
-    public function download($fileName){
-      var_dump($fileName);
+    public function download($fileName){      
         $file='./upload/dokumen/'.$fileName;
         force_download($file,NULL);
     }
